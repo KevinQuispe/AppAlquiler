@@ -22,13 +22,11 @@ import com.alquiler.appalquiler.utilidades.Utilidades;
 
 import java.util.ArrayList;
 
-
 public class ListaInquilinos extends Fragment {
     ListView listViewPersonas;
     ArrayList<String> listaInformacion;
     ArrayList<persona> listaPerson;
     ConexionSqlHelper conn;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,6 +38,7 @@ public class ListaInquilinos extends Fragment {
 
         ArrayAdapter adaptador=new ArrayAdapter(getContext(),android.R.layout.simple_selectable_list_item,listaInformacion);
         //obtener lista
+
         listViewPersonas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -57,28 +56,6 @@ public class ListaInquilinos extends Fragment {
                 bundle.putString("correoKey",listaPerson.get(position).getCorreo().toString());
                 fragment.setArguments(bundle);
                 fragmentManager.beginTransaction().replace(R.id.contenedorfragment, fragment).commit();
-
-
-           /*     switch (position){
-                    case 0:
-                        fragment = new DetalleInquilino();
-                        Toast.makeText(getContext(),"me salio csm",Toast.LENGTH_LONG).show();
-                        break;
-                    case 1:
-                        fragment = new DetalleInquilino();
-                        //Intent intent = new Intent(getActivity(), MainActivity.class);
-                        //startActivity(intent);
-                        Toast.makeText(getContext(),"me salio csm",Toast.LENGTH_LONG).show();
-                        break;
-                    case 2:
-                        fragment = new DetalleInquilino();
-                        Toast.makeText(getContext(),"me salio csm",Toast.LENGTH_LONG).show();
-                        break;
-                }
-                if (fragment != null) {
-                    fragment = new DetalleInquilino();
-                    fragmentManager.beginTransaction().replace(R.id.contenedorfragment, fragment).commit();
-                } */
             }
             private FragmentManager getSupportFragmentManager() {
                 return null;
